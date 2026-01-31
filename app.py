@@ -10,7 +10,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # allow all origins (OK for demo / college project)
+    allow_origins=[
+        "https://fundwise-frontend-omega.vercel.app",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

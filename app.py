@@ -6,12 +6,16 @@ import pandas as pd
 app = FastAPI()
 
 # -------------------- CORS --------------------
+from fastapi.middleware.cors import CORSMiddleware
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # allow all origins (OK for demo / college project)
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # -------------------- Load Data --------------------
 df = pd.read_excel("data/mf_cleaned.xlsx")
@@ -79,3 +83,4 @@ def recommend_funds(user: UserInput):
         "allocation": allocation,
         "recommended_funds": recommendations
     }
+
